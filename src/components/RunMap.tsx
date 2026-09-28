@@ -62,7 +62,7 @@ function camFor(pts: LngLat[], w: number, h: number, pad: Pad, bear: number, max
 }
 
 const fitPad = (w: number): Pad =>
-  w < 520 ? { top: 90, bottom: 150, left: 74, right: 70 } : { top: 100, bottom: 180, left: 120, right: 120 }
+  w < 520 ? { top: 96, bottom: 150, left: 96, right: 40 } : { top: 100, bottom: 180, left: 120, right: 120 }
 
 export interface RunMapProps {
   theme: Theme
@@ -358,7 +358,7 @@ export function RunMap(props: RunMapProps) {
         const a = corner(`${st}|${GRID.westEnd}`)
         const b = corner(`${st}|${GRID.eastEnd}`)
         const rot = bearing(a, b) - 90
-        const lbl = el('mk-street', `${st} St`)
+        const lbl = el('mk-street', `${st}<span class="mk-street-sfx"> St</span>`)
         new maplibregl.Marker({ element: lbl, rotationAlignment: 'map', rotation: rot, anchor: 'right' })
           .setLngLat(extend(a, b, 40)).addTo(map)
       }
@@ -366,7 +366,7 @@ export function RunMap(props: RunMapProps) {
         const a = corner(`${GRID.southEnd}|${st}`)
         const b = corner(`${GRID.northEnd}|${st}`)
         const rot = bearing(a, b) - 90
-        const lbl = el('mk-street', `${st} St`)
+        const lbl = el('mk-street', `${st}<span class="mk-street-sfx"> St</span>`)
         new maplibregl.Marker({ element: lbl, rotationAlignment: 'map', rotation: rot, anchor: 'right' })
           .setLngLat(extend(a, b, 44)).addTo(map)
       }

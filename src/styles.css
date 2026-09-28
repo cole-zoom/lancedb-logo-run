@@ -1472,8 +1472,23 @@ a.inline {
     font-size: 9px;
     letter-spacing: 0.08em;
   }
+  .mk-street-sfx {
+    display: none;
+  }
   .mk-poi {
     display: none;
+  }
+  /* On phones the flag shrinks to just the checkered badge so it stays on screen */
+  .mk-start-flag {
+    font-size: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    left: 24px;
+  }
+  .mk-start-flag::before {
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
